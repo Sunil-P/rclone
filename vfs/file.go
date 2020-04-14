@@ -168,7 +168,8 @@ func (f *File) rename(ctx context.Context, destDir *Dir, newName string) error {
 		return err
 	}
 
-	newPath := path.Join(destDir.path, newName)
+	// File.mu is unlocked here to call Dir.Path()
+	newPath := path.Join(destDir.Path(), newName)
 
 	renameCall := func(ctx context.Context) error {
 		// chain rename calls if any
