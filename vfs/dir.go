@@ -698,7 +698,14 @@ func (d *Dir) Sync() error {
 
 // VFS returns the instance of the VFS
 func (d *Dir) VFS() *VFS {
+	// No locking required
 	return d.vfs
+}
+
+// Fs returns the Fs that the Dir is on
+func (d *Dir) Fs() fs.Fs {
+	// No locking required
+	return d.f
 }
 
 // Truncate changes the size of the named file.

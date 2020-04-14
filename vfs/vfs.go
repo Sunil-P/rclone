@@ -307,7 +307,7 @@ func (vfs *VFS) WaitForWriters(timeout time.Duration) {
 	for {
 		writers := 0
 		vfs.root.walk(func(d *Dir) {
-			fs.Debugf(d.path, "Looking for writers")
+			fs.Debugf(d.Path(), "Looking for writers")
 			// NB d.mu is held by walk() here
 			for leaf, item := range d.items {
 				fs.Debugf(leaf, "reading active writers")
